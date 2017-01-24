@@ -40,7 +40,7 @@ playlists, but I doubt they would be insoluble.
 
 ##Instructions
 
-The [playlist app](!http://repurpose.com.s3-website-us-east-1.amazonaws.com/views/playlist.html) is live!
+The [playlist app](http://repurpose.com.s3-website-us-east-1.amazonaws.com/views/playlist.html) is live!
 
 *please visit the link above to see it in action*
 

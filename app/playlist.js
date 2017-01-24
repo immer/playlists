@@ -32380,6 +32380,8 @@
 /* 3 */
 /***/ function(module, exports) {
 
+	// @todo split this file into component files
+
 	var add,
 	    patch,
 	    setter,
@@ -32449,18 +32451,21 @@
 
 
 	/*
-	 * @doc function add
+	 * @doc function: insert
+	 *
+	 * @description:
+	 *
+	 * Writes tracks to the playlist using the track's id as a "primary key"
 	 */
 	function insert (track) {
-	  // Used to preference recent additions to the list
 	  var timestamp = Date.now(),
 	      __set = setter.bind(this)
 
 	  track.__created_at = timestamp
 
-	  // Keep track (pun unintended) of which tracks are in the list
 	  this.tracks[track.id] = track
 
+	  // quack
 	  __set()
 
 	  return track
@@ -32468,8 +32473,12 @@
 
 	/*
 	 * @doc function: patch
-	   if the track was selected from the search window,
-	   add it to the list, otherwise delete it
+	 *
+	 * @description
+	 *
+	 * patch is invoked through ng-change. The event's srcElem is a checkbox, so it
+	 * toggles the boolean track.__selected. This acts as a flag to mark
+	 * write/destroy
 	 */
 	function patch (track) {
 	  var __insert = insert.bind(this),
