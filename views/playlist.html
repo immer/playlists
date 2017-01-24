@@ -41,7 +41,6 @@
       <ul>
         <li ng-repeat="track in playlist.data.values | orderBy:'-__created_at' | limitTo:10">
           <div class="card">
-            <img ng-src="{{ track.images[0].uri }}">
             <div class="card-divider">
               <label for="{{ track.id }}">
                 <h3>{{ track.name }}</h3>
