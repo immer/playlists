@@ -7,7 +7,7 @@ server: app/playlist.js
 bundle.js: ./src/playlist.js
 
 clean:
-	rm app/playlist.js
+	rm -f app/playlist.js
 
 release: clean app/playlist.js
 	aws s3 sync app s3://repurpose.com/app
