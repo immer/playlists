@@ -47,6 +47,7 @@ The [playlist app](http://repurpose.com.s3-website-us-east-1.amazonaws.com/views
 ###### Testing
 
 
+    npm install
     make test
 
 ###### Development
