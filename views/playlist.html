@@ -1,0 +1,77 @@
+<!doctype html>
+<html lang="en" ng-app="playlist">
+<head>
+  <link rel="stylesheet" href="/app/foundation-6.3.0-complete/css/foundation.min.css" />
+  <meta charset="utf-8">
+  <title>Angular Top Songs</title>
+  <script src="/app/playlist.js"></script>
+</head>
+<body class="row" ng-controller="PlaylistController">
+    <!-- SEARCH ARED -->
+    <div class="small-12 large-4 columns">
+      <input type="text" placeholder="search" ng-change="search()" ng-model="q" />
+      <!-- TODO: consolidate duplication in this view into a directive -->
+      <ul>
+        <li ng-repeat="track in tracks">
+          <div class="card">
+            <div class="card-divider">
+              <label for="{{ track.id }}">
+                <h3>{{ track.name }}</h3>
+                <input type="checkbox" ng-change="playlist.patch(this.track)" ng-model="track.__selected" id="{{ track.id }}" />
+              </label>
+            </div>
+
+            <div class="card-section">
+              <dl>
+                <dt>Album:</dt>
+                <dd>{{ track.album.name }}</dd>
+                <dt>Artists:</dt>
+                <dd ng-repeat="artist in track.album.artists">{{ artist.name }}</dd>
+              </dl>
+            </div>
+          </div>
+        </li>
+      </ul>
+    </div>
+
+    <!-- PLAYLIST AREA -->
+    <div class="small-12 large-4 columns">
+      <input type="text" placeholder="Playlist Name" ng-model="playlist.name" />
+      <!-- TODO: consolidate duplication in this view into a directive -->
+      <ul>
+        <li ng-repeat="track in playlist.values | orderBy:'-__created_at' | limitTo:10">
+          <div class="card">
+            <img ng-src="{{ track.images[0].uri }}">
+            <div class="card-divider">
+              <label for="{{ track.id }}">
+                <h3>{{ track.name }}</h3>
+                <input type="checkbox" ng-change="playlist.patch(this.track)" ng-model="track.__selected" id="{{ track.id }}" />
+              </label>
+            </div>
+
+
+            <div class="card-section">
+              <dl>
+                <dt>Album:</dt>
+                <dd>{{ track.album.name }}</dd>
+                <dt>Artists:</dt>
+                <dd ng-repeat="artist in track.album.artists">{{ artist.name }}</dd>
+              </dl>
+            </div>
+
+            <div class="card-section">
+              <input type="text" placeholder="customImage" ng-model="track.image" />
+              <input type="text" placeholder="customNotes" ng-model="track.notes" />
+            </div>
+          </div>
+        </li>
+      </ul>
+    </div>
+
+    <dl class="small-12 large-4 columns">
+      <dt> JSON Output </dt>
+
+      <dd> {{ playlist | playlistPresenter | json }} </dd>
+    </dl>
+</body>
+</html>
