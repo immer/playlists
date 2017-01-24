@@ -47,7 +47,11 @@ The [playlist app](http://repurpose.com.s3-website-us-east-1.amazonaws.com/views
 ###### Testing
 
 
-    make clean test
+    make test
+
+###### Development
+
+    make server
 
 
 ###### Releasing
