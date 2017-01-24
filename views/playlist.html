@@ -39,7 +39,7 @@
       <input type="text" placeholder="Playlist Name" ng-model="playlist.name" />
       <!-- TODO: consolidate duplication in this view into a directive -->
       <ul>
-        <li ng-repeat="track in playlist.values | orderBy:'-__created_at' | limitTo:10">
+        <li ng-repeat="track in playlist.data.values | orderBy:'-__created_at' | limitTo:10">
           <div class="card">
             <img ng-src="{{ track.images[0].uri }}">
             <div class="card-divider">
